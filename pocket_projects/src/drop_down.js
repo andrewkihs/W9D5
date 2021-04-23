@@ -15,14 +15,13 @@ const dogLinkCreator = function () {
   const dogLinks = [];
   for (const item in dogs) {
     const a = document.createElement("a");
-    a.innerHTML = item.key;
-    a.href = item.value;
+    a.innerHTML = item;
+    a.href = dogs[item];
     const li = document.createElement("li");
     li.className = "dog-link";
-    li.appendChild(a)
+    li.appendChild(a);
     dogLinks.push(li);
-  }
-  debugger
+  };
   return dogLinks;
 }
 
@@ -30,17 +29,39 @@ const dropdownList = document.querySelector(".drop-down-dog-list");
 
 const attachDogLinks = function () {
   const dogLinks = dogLinkCreator();
-  debugger
   dogLinks.forEach ( li => {
-    debugger
     dropdownList.appendChild(li);
-  })
-  console.log(dogLinks)
+  });
+}
+const dogLinkElements = document.getElementsByClassName("dog-link");
+const handleEnter = function () {
+  console.log(dogLinkElements);
+  console.log('mouse enter');
+  // set display xcxx
+  // dogLinkElements.each(htmlEle => {
+  for (let i = 0; i < dogLinkElements.length; i++){
+    let htmlEle = dogLinkElements[i];
+    htmlEle.style.display = "block";
+  }
+  // dogLinkElements.style.display = "block";
 }
 
-attachDogLinks()
+const handleLeave = function () {
+  // set displayNone
+  console.log("mouse leave")
+  for (let i = 0; i < dogLinkElements.length; i++) {
+    let htmlEle = dogLinkElements[i];
+    htmlEle.style.display = "none";
+  }
+};
+
+
+dropdownList.addEventListener("mouseenter", handleEnter);
+dropdownList.addEventListener("mouseleave", handleLeave);
+
+
 
 export const dropdown = attachDogLinks();
-// export const dropdown;
+
 
 
