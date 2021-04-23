@@ -36,7 +36,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n/* harmony import */ var _drop_down_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drop_down.js */ \"./src/drop_down.js\");\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n/* harmony import */ var _drop_down_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drop_down.js */ \"./src/drop_down.js\");\n/* harmony import */ var _todo_list_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todo_list.js */ \"./src/todo_list.js\");\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/todo_list.js":
+/*!**************************!*\
+  !*** ./src/todo_list.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"todo\": () => (/* binding */ todo)\n/* harmony export */ });\nconst lsToDos = JSON.parse(localStorage.getItem('todos')) || [];\n\nconst ul = document.querySelector(\".todos\");\nconst form = document.querySelector(\".add-todo-form\");\n\nconst addTodo = (e) => {\n  e.preventDefault();\n  const input = document.querySelector(\"input[name='add-todo']\");\n  const value = input.value;\n  const todo = {\"value\": value, done: false };\n  lsToDos.push(todo);\n  localStorage.setItem(\"todos\", JSON.stringify(lsToDos));\n\n  populateList();\n  // reset form value\n  form.reset();\n}\n\nconst populateList = () => {\n  console.log(\"populating\")\n  lsToDos.forEach(list => {\n    //  make li\n    const li = document.createElement(\"li\");\n\n    // make inner elements\n    const label = document.createElement(\"label\");\n    label.innerText = list.value;\n    const labelCheckbox = document.createElement(\"input\");\n    labelCheckbox.setAttribute(\"type\", \"checkbox\");\n    labelCheckbox.checked = list.done;\n    labelCheckbox.innerText = \"Done?\"\n\n    // append children to li\n    li.appendChild(label);\n    li.appendChild(labelCheckbox);\n\n    ul.appendChild(li);\n  });\n}\n\nform.addEventListener(\"submit\", addTodo);\n\nconst todo = addTodo()\n\n//# sourceURL=webpack:///./src/todo_list.js?");
 
 /***/ }),
 
