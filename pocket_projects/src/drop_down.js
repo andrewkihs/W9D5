@@ -1,3 +1,8 @@
+const dogNav = document.querySelector(".drop-down-dog-nav");
+const dropdownList = document.querySelector(".drop-down-dog-list");
+const dogLinkElements = document.getElementsByClassName("dog-link");
+
+
 
 const dogs = {
   "Corgi": "https://www.akc.org/dog-breeds/cardigan-welsh-corgi/",
@@ -25,30 +30,25 @@ const dogLinkCreator = function () {
   return dogLinks;
 }
 
-const dropdownList = document.querySelector(".drop-down-dog-list");
 
 const attachDogLinks = function () {
   const dogLinks = dogLinkCreator();
   dogLinks.forEach ( li => {
     dropdownList.appendChild(li);
   });
+  handleLeave();
 }
-const dogLinkElements = document.getElementsByClassName("dog-link");
+
+
 const handleEnter = function () {
-  console.log(dogLinkElements);
-  console.log('mouse enter');
-  // set display xcxx
-  // dogLinkElements.each(htmlEle => {
   for (let i = 0; i < dogLinkElements.length; i++){
     let htmlEle = dogLinkElements[i];
     htmlEle.style.display = "block";
   }
-  // dogLinkElements.style.display = "block";
 }
 
+
 const handleLeave = function () {
-  // set displayNone
-  console.log("mouse leave")
   for (let i = 0; i < dogLinkElements.length; i++) {
     let htmlEle = dogLinkElements[i];
     htmlEle.style.display = "none";
@@ -56,9 +56,9 @@ const handleLeave = function () {
 };
 
 
-dropdownList.addEventListener("mouseenter", handleEnter);
-dropdownList.addEventListener("mouseleave", handleLeave);
 
+dogNav.addEventListener("mouseenter", handleEnter);
+dropdownList.addEventListener("mouseleave", handleLeave);
 
 
 export const dropdown = attachDogLinks();
