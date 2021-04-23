@@ -3,7 +3,6 @@ const dropdownList = document.querySelector(".drop-down-dog-list");
 const dogLinkElements = document.getElementsByClassName("dog-link");
 
 
-
 const dogs = {
   "Corgi": "https://www.akc.org/dog-breeds/cardigan-welsh-corgi/",
   "Australian Shepherd": "https://www.akc.org/dog-breeds/australian-shepherd/",
